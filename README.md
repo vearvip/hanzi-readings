@@ -30,26 +30,32 @@ import { queryReading } from '@vearvip/hanzi-duyin';
 // 查询普通话读音
 const mandarinReading = await queryReading('汉', 'mandarin');
 console.log(`Mandarin reading of 汉: ${mandarinReading}`);
+// Mandarin reading of 汉: hàn
 
 // 查询粤语读音
 const cantoneseReading = await queryReading('汉', 'cantonese');
 console.log(`Cantonese reading of 汉: ${cantoneseReading}`);
+// Cantonese reading of 汉: hon3
 
 // 查询日语音读
 const japaneseOnReading = await queryReading('漢', 'japaneseOn');
 console.log(`Japanese On reading of 漢: ${japaneseOnReading}`);
+// Japanese On reading of 漢: KAN
 
 // 查询日语训读
 const japaneseKunReading = await queryReading('漢', 'japaneseKun');
 console.log(`Japanese Kun reading of 漢: ${japaneseKunReading}`);
+// Japanese Kun reading of 漢: KARA
 
 // 查询韩语读音
 const koreanReading = await queryReading('汉', 'korean');
 console.log(`Korean reading of 汉: ${koreanReading}`);
+// Korean reading of 汉: 未找到 汉 在 korean 中的读音。
 
 // 查询越南语读音
 const vietnameseReading = await queryReading('漢', 'vietnamese');
 console.log(`Vietnamese reading of 漢: ${vietnameseReading}`);
+// Vietnamese reading of 漢: hán
  
 ```
 
