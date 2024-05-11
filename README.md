@@ -1,6 +1,6 @@
-# hanzi-duyin
+# hanzi-readings
 
-`@vearvip/hanzi-duyin` 是一个npm包，提供了一种简便方法来查询汉字在多种方言和语言中的读音，包括普通话、粤语、日语（音读/训读）、韩语、越南语等，基于Unihan数据库。
+`@vearvip/hanzi-readings` 是一个npm包，提供了一种简便方法来查询汉字在多种方言和语言中的读音，包括普通话、粤语、日语（音读/训读）、韩语、越南语等，基于Unihan数据库。
 
 ## 特性
 
@@ -13,19 +13,19 @@
 通过npm安装：
 
 ```bash
-npm install @vearvip/hanzi-duyin
+npm install @vearvip/hanzi-readings
 ```
 
 通过yarn安装：
 
 ```bash
-yarn add @vearvip/hanzi-duyin
+yarn add @vearvip/hanzi-readings
 ```
 
 ## 使用
 
 ```javascript
-import { queryReading } from '@vearvip/hanzi-duyin';
+import { queryReading } from '@vearvip/hanzi-readings';
 
 // 查询普通话读音
 const mandarinReading = await queryReading('汉', 'mandarin');
