@@ -1,5 +1,5 @@
 {
-  "name": "@vearvip/hanzi-duyin",
+  "name": "@vearvip/hanzi-readings",
   "version": "1.0.0",
   "description": "查询汉字的普通话拼音、粤语粤拼",
   "main": "src/index.js",
@@ -11,10 +11,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vearvip/hanzi-duyin.git"
+    "url": "git+https://github.com/vearvip/hanzi-readings.git"
   },
   "bugs": {
-    "url": "https://github.com/vearvip/hanzi-duyin/issues"
+    "url": "https://github.com/vearvip/hanzi-readings/issues"
   },
-  "homepage": "https://github.com/vearvip/hanzi-duyin#readme"
+  "homepage": "https://github.com/vearvip/hanzi-readings#readme"
 }
