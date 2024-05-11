@@ -5,35 +5,30 @@ import path from "path";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const mandarinReadingsPath = path.join(
-  __dirname,
-  "Unihan_Mandarin_Readings.json",
-);
-// 普通话查询函数
-export async function queryMandarin(char) {
-  try {
-    const data = await fs.readFile(mandarinReadingsPath, { encoding: "utf8" });
-    const readings = JSON.parse(data);
+// 指定所有方言读音的文件路径
+const readingsPaths = {
+  mandarin: path.join(__dirname, "Unihan_Mandarin_Readings.json"),
+  cantonese: path.join(__dirname, "Unihan_Cantonese_Readings.json"),
+  japaneseOn: path.join(__dirname, "Unihan_JapaneseOn_Readings.json"),
+  korean: path.join(__dirname, "Unihan_Korean_Readings.json"),
+  vietnamese: path.join(__dirname, "Unihan_Vietnamese_Readings.json"),
+  japaneseKun: path.join(__dirname, "Unihan_JapaneseKun_Readings.json"),
+  // ...其他方言的路径
+};
 
-    return readings[char];
-  } catch (error) {
-    console.error("查询普通话读音时发生错误:", error);
+// 查询函数，根据传入的方言返回对应的读音
+export async function queryReading(char, dialect) {
+  if (!readingsPaths[dialect]) {
+    throw new Error(`读音查询不支持此方言: ${dialect}`);
   }
-}
 
-const cantoneseReadingsPath = path.join(
-  __dirname,
-  "Unihan_Cantonese_Readings.json",
-);
-
-// 粤语查询函数
-export async function queryCantonese(char) {
   try {
-    const data = await fs.readFile(cantoneseReadingsPath, { encoding: "utf8" });
+    const data = await fs.readFile(readingsPaths[dialect], {
+      encoding: "utf8",
+    });
     const readings = JSON.parse(data);
-
     return readings[char];
   } catch (error) {
-    console.error("查询粤语读音时发生错误:", error);
+    console.error(`查询 ${dialect} 读音时发生错误:`, error);
   }
 }
