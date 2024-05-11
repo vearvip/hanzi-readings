@@ -1,12 +1,20 @@
 {
-  "name": "workspace",
-  "version": "1.0.0",
+  "name": "@vearvip/hanzi-duyin",
+  "version": "1.0.0-beta.1",
   "description": "查询汉字的普通话拼音、粤语粤拼",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "vearvip",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vearvip/hanzi-duyin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vearvip/hanzi-duyin/issues"
+  },
+  "homepage": "https://github.com/vearvip/hanzi-duyin#readme"
 }
