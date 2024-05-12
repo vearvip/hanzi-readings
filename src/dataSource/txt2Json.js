@@ -1,50 +1,25 @@
 const fs = require("fs");
 const readline = require("readline");
 const path = require("path");
+const { propertyList } = require('../utils/index')
 
 const inputFilePath = path.join(__dirname, "Unihan_Readings.txt");
-const outputMandarinFilePath = path.join(
-  __dirname,
-  "Unihan_Mandarin_Readings.json",
-);
-const outputCantoneseFilePath = path.join(
-  __dirname,
-  "Unihan_Cantonese_Readings.json",
-);
-const outputJapaneseKunFilePath = path.join(
-  __dirname,
-  "Unihan_JapaneseKun_Readings.json",
-);
-const outputJapaneseOnFilePath = path.join(
-  __dirname,
-  "Unihan_JapaneseOn_Readings.json",
-);
-const outputKoreanFilePath = path.join(
-  __dirname,
-  "Unihan_Korean_Readings.json",
-);
-const outputVietnameseFilePath = path.join(
-  __dirname,
-  "Unihan_Vietnamese_Readings.json",
-);
+const outputFilePath = path.join(__dirname, "Unihan_Readings.json")
 
-async function convertUnihanReadingsToJson(inputPath, outputPaths) {
+
+async function convertUnihanReadingsToJson(inputPath, outputPath) {
   const fileStream = fs.createReadStream(inputPath, { encoding: "utf8" });
   const rl = readline.createInterface({
     input: fileStream,
     crlfDelay: Infinity,
   });
 
-  const readings = {
-    mandarin: {},
-    cantonese: {},
-    japaneseKun: {},
-    japaneseOn: {},
-    korean: {},
-    vietnamese: {},
-  };
+  const readings = {};
 
   for await (const line of rl) {
+    if (!line) {
+      break
+    }
     const trimmedLine = line.trim();
     if (trimmedLine) {
       const parts = trimmedLine.split("\t");
@@ -56,53 +31,25 @@ async function convertUnihanReadingsToJson(inputPath, outputPaths) {
             const char = String.fromCodePoint(codePoint);
             const property = parts[1];
             const value = parts.slice(2).join(", ");
-
-            switch (property) {
-              case "kMandarin":
-                readings.mandarin[char] = value;
-                break;
-              case "kCantonese":
-                readings.cantonese[char] = value;
-                break;
-              case "kJapaneseKun":
-                readings.japaneseKun[char] = value;
-                break;
-              case "kJapaneseOn":
-                readings.japaneseOn[char] = value;
-                break;
-              case "kKorean":
-                readings.korean[char] = value;
-                break;
-              case "kVietnamese":
-                readings.vietnamese[char] = value;
-                break;
+            if (propertyList.includes(property)) {
+              const propertyIndex = propertyList.indexOf(property);
+              if (!readings[char]) {
+                readings[char] = [];
+              } 
+              readings[char][propertyIndex] = value;
             }
           }
         }
       }
     }
   }
+ 
 
-  rl.close();
-  fileStream.close();
+  // 修改为根据输出路径参数写入文件
+  await fs.promises.writeFile(outputPath, JSON.stringify(readings, null, 2));
 
-  // 将结果写入到对应的输出文件
-  await Promise.all(
-    Object.entries(outputPaths).map(([key, filePath]) =>
-      fs.promises.writeFile(filePath, JSON.stringify(readings[key], null, 2)),
-    ),
-  );
-
-  console.log("转换完成，输出文件保存在指定的路径。");
+  console.log(`转换完成，输出文件已保存。转换了${Object.keys(readings).length}个有用汉字。`);
 }
 
-convertUnihanReadingsToJson(inputFilePath, {
-  mandarin: outputMandarinFilePath,
-  cantonese: outputCantoneseFilePath,
-  japaneseKun: outputJapaneseKunFilePath,
-  japaneseOn: outputJapaneseOnFilePath,
-  korean: outputKoreanFilePath,
-  vietnamese: outputVietnameseFilePath,
-}).catch((error) => {
-  console.error("An error occurred:", error);
-});
+// 调用函数时可以传入自定义的输出路径，不传则默认保存在同一目录
+convertUnihanReadingsToJson(inputFilePath, outputFilePath);
