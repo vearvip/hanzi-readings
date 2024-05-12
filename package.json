@@ -1,6 +1,6 @@
 {
   "name": "@vearvip/hanzi-readings",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "查询汉字的普通话拼音、粤语粤拼",
   "main": "src/index.js",
   "scripts": {
@@ -9,6 +9,7 @@
   "keywords": [],
   "author": "vearvip",
   "license": "MIT",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vearvip/hanzi-readings.git"
