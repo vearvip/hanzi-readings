@@ -1,12 +1,22 @@
 {
   "name": "@vearvip/hanzi-readings",
-  "version": "1.0.4",
-  "description": "查询汉字的普通话拼音、粤语粤拼",
+  "version": "1.0.5",
+  "description": "查询汉字的普通话拼音、粤语粤拼、韩语、日语、越南语的汉字发音",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "拼音",
+    "普通话",
+    "粤语",
+    "粤拼",
+    "韩语",
+    "日语",
+    "越南语",
+    "读音",
+    "汉字"
+  ],
   "author": "vearvip",
   "license": "MIT",
   "type": "module",
