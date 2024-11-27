@@ -1,6 +1,6 @@
 {
   "name": "@vearvip/hanzi-readings",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "查询汉字的普通话拼音、粤语粤拼、韩语、日语、越南语的汉字发音",
   "main": "src/index.js",
   "scripts": {
