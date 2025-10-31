@@ -4,7 +4,8 @@
 
 ## 简介
 
-`@vearvip/hanzi-readings` 是一个方便的JavaScript库，旨在提供快速查询汉字在多种东亚语言及方言中读音的功能。此模块基于[Unihan数据库](https://www.unicode.org/charts/unihan.html)构建，封装了一个简洁的API来检索包括粤语、日语、韩语、普通话及越南语在内的多种读音数据，适用于任何需要汉字多语言发音信息的应用场景。
+`@vearvip/hanzi-readings` 是一个方便的JavaScript库，旨在提供快速查询汉字在多种东亚语言及方言中读音的功能。此模块基于[Unihan数据库](https://www.unicode.org/charts/unihan.html)构建（Unicode-17.0.0），封装了一个简洁的API来检索包括粤语、日语、韩语、普通话、越南语及中古汉语在内的多种读音数据，适用于任何需要汉字多语言发音信息的应用场景。
+> [https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip](https://www.unicode.org/Public/17.0.0/ucd/)
 
 ## 安装
 
@@ -21,7 +22,7 @@ yarn add @vearvip/hanzi-readings
 ```javascript
 import { queryReading } from '@vearvip/hanzi-readings';
 
-// 查询汉字“一”的粤语、日语、韩语、普通话及越南语读音
+// 查询汉字“一”的粤语、日语、韩语、普通话、越南语及中古汉语读音
 const readings = queryReading('一');
 console.log(readings);
 /*
@@ -33,6 +34,7 @@ console.log(readings);
   kKorean: "IL",
   kMandarin: "yī",
   kVietnamese: "nhất",
+  kTang: '*qit qit'
 }
 */
 ```

@@ -1,7 +1,10 @@
 {
   "name": "@vearvip/hanzi-readings",
-  "version": "1.0.6",
-  "description": "查询汉字的普通话拼音、粤语粤拼、韩语、日语、越南语的汉字发音",
+  "version": "1.0.7",
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "description": "查询汉字的普通话拼音、粤语粤拼、韩语、日语、越南语、中古汉语的汉字发音（Unicode-17.0.0）",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,6 +17,7 @@
     "韩语",
     "日语",
     "越南语",
+    "中古汉语",
     "读音",
     "汉字"
   ],

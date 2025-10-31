@@ -5,4 +5,5 @@ export const propertyList = [
   "kJapaneseOn", // 日本語（音読）
   "kKorean", // 韓国語
   "kVietnamese", // 越南語
+  'kTang', // 中古汉语
 ]
